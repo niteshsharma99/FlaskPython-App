@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP and Hostname</title>
+    <script>
+        async function fetchInfo() {
+            try {
+                const response = await fetch('/api/info');
+                const data = await response.json();
+                document.getElementById('hostname').textContent = data.hostname;
+                document.getElementById('ip_address').textContent = data.ip_address;
+            } catch (error) {
+                console.error('Error fetching information:', error);
+            }
+        }
+    </script>
+</head>
+<body onload="fetchInfo()">
+    <h1>Sample web page shows Instance Information</h1>
+    <p><strong>Version:1.0.0</strong> <span id="version">Loading...</span></p>
+    <p><strong>Hostname:</strong> <span id="hostname">Loading...</span></p>
+    <p><strong>IP Address:</strong> <span id="ip_address">Loading...</span></p>
+</body>
+</html>
+
